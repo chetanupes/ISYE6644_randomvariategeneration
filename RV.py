@@ -183,12 +183,14 @@ if Select_Method=='Inverse Transform Method':
     
     
 if Select_Method=='Convolution Method':
-    Select_Dist=st.sidebar.selectbox('Select a Distribution', ('Binomial','Triangular','Erlang'))
-    #Choosing a unifor dist
+   
+    #Choosing a uniform dist
     st.sidebar.markdown('# Generating a Uniform')
     Lower=st.sidebar.number_input("Lower Limit",0)
     Upper=st.sidebar.number_input("Upper Limit",1)
     Size=st.sidebar.number_input("Size", 20)
+    
+    Select_Dist=st.sidebar.selectbox('Select a Distribution', ('Binomial','Triangular','Erlang'))
 
     st.title('Convolution Method')
     st.write('The convolution method is nothing but adding random variables to generate random observations. Some examples where we can use convolution method to generate random variables are Binomial - where we can add up the random variables from the Bernoulli distribution and Erlang distribution - where we can add up the random variables from exponential distribution.')
