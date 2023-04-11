@@ -266,7 +266,7 @@ if Select_Method=='Box Muller Method':
         X.extend(z)
 
     fig = px.histogram(X)
-    fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram Normal RV')
+    fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: Normal RV')
 
     #Plot!
     st.plotly_chart(fig, use_container_width=True)
@@ -279,6 +279,3 @@ st.write('[2] Burr, T., Merrifield, S., Duffy, D., Griffiths, J., Wright, S., Ba
 st.write('[3] Preston, J., Wall, G., Batley, R., Ibáñez, J.N., Shires, J., 2009. Impact of delays on passenger train services. Transport. Res. Rec.: J. Transport. Res. Board 2117 (1), 14–23.')
 st.write('[4] Fredrik Monsuur, Marcus Enoch, Mohammed Quddus, Stuart Meek, Modeling the impact of rail delays on passenger satisfaction, Transportation Research Part A: Policy and Practice, Volume 152, 2021, Pages 19-35, ISSN 0965-8564.')
 st.write('[5] Nils O.E. Olsson, Hans Haugland, Influencing factors on train punctuality—results from some Norwegian studies, Transport Policy, Volume 11, Issue 4, 2004, Pages 387-397, ISSN 0967-070X.')
-st.write('[6] Wiggenraad, P.B.L., 2001. Alighting and Boarding Times of Passengers at Dutch Railway Stations. Report, TRAIL Research School, Delft.')
-st.write('[7] Flier, H., Gelashvili, R., Graffagnino, T., Nunkesser, M. (2009). Mining Railway Delay Dependencies in Large-Scale Real-World Delay Data. In: Ahuja, R.K., Möhring, R.H., Zaroliagis, C.D. (eds) Robust and Online Large-Scale Optimization. Lecture Notes in Computer Science, vol 5868. Springer, Berlin, Heidelberg.')
-st.write('[8] Tijs Huisman, Richard J. Boucherie, Nico M. van Dijk, A solvable queueing network model for railway networks and its validation and applications for the Netherlands, European Journal of Operational Research, Volume 142, Issue 1, 2002, Pages 30-51, ISSN 0377-2217.')
