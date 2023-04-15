@@ -73,7 +73,57 @@ def rvbern(p,n):
         else:
             X.append(1)
     return X
-
+#Gamma
+def rvgamma(n,lmbda=0.5, beta=0.5):
+    X=[]
+    U= uniform_rv(lower_limit=0, higher_limit=1, size=n)
+    e=math.exp(1)
+    if beta<1:
+        b=(e+beta)/e
+        for i in range(n-1):
+            W=b*U[i]
+            if W < 1:
+                invbeta=1/beta
+                Y=pow(W,invbeta)
+                V=U[i+1]
+                if V <= pow(e,-Y):
+                    X.append(Y/lmbda)
+            else:
+                Y=-np.log((b-W)/beta)
+                V=U[i+1]
+                if V <= pow(Y,beta-1):
+                    X.append(Y/lmbda)
+    if beta>=1:
+        a= pow(2*beta-1,-0.5)
+        b=beta-np.log(4)
+        c=beta+pow(a,-1)
+        d=1 + np.log(4.5)
+        for i in range(n-1):
+            V=a*np.log(U[i]/(1-U[i]))
+            Y=beta*pow(e,V)
+            Z=pow(U[i],2)*U[i+1]
+            W=b+(c*V)-Y
+            if ((W+d-(4.5*Z)) >= 0):
+                X.append(Y/lmbda)
+            elif W >= np.log(Z):
+                X.append(Y/lmbda)
+    return X
+#Poisson
+def rvpoisson(n,lmbda=0.5):
+    X1=[]
+    e=math.exp(1)
+    U=uniform_rv(lower_limit=0, higher_limit=1, size=n)
+    a=pow(e,-lmbda)
+    i=0
+    while i < n:
+        p=1
+        X=-1
+        while p > a:
+            p=p*U[i]
+            X=X+1
+            i=i+1
+        X1.append(X)
+    return X1
 
 st.title('ISYE-6644: Project (Random Variate Generator)')
 
@@ -95,7 +145,7 @@ st.write('The core objective of this project is to generate random variates (obs
 
 # Selecting the method for analysis   
 st.sidebar.markdown("# Selecting RV Generator Method")
-Select_Method=st.sidebar.selectbox('Select a Model', ('Inverse Transform Method','Convolution Method', 'Box Muller Method'))
+Select_Method=st.sidebar.selectbox('Select a Model', ('Inverse Transform Method','Convolution Method', 'Acceptance-Rejection', 'Box Muller Method'))
 
 #Method Selection
 
@@ -183,13 +233,13 @@ if Select_Method=='Inverse Transform Method':
     
     
 if Select_Method=='Convolution Method':
-   
-    #Choosing a uniform dist
+    
+    #Choosing a unifor dist
     st.sidebar.markdown('# Generating a Uniform')
     Lower=st.sidebar.number_input("Lower Limit",0)
     Upper=st.sidebar.number_input("Upper Limit",1)
     Size=st.sidebar.number_input("Size", 20)
-    
+
     Select_Dist=st.sidebar.selectbox('Select a Distribution', ('Binomial','Triangular','Erlang'))
 
     st.title('Convolution Method')
@@ -247,6 +297,51 @@ if Select_Method=='Convolution Method':
         #Plot!
         st.plotly_chart(fig, use_container_width=True)
 
+if Select_Method=='Acceptance-Rejection':
+
+    st.title('Acceptance-Rejection')
+    st.write('Acceptance-Rejection is a way to simulate random samples from an unknown (or difficult to sample from) distribution (called the target distribution) by using random samples from a similar, more convenient probability distribution. A random subset of the generated samples are rejected; the rest are accepted. The goal is for the accepted samples to be distributed as if they were from the target probability distribution.')
+
+    #Choosing a unifor dist
+    st.sidebar.markdown('# Generating a Uniform')
+    Lower=st.sidebar.number_input("Lower Limit",0)
+    Upper=st.sidebar.number_input("Upper Limit",1)
+    Size=st.sidebar.number_input("Size", 20)
+    
+    st.sidebar.markdown("# Selecting RV Generator")
+    Select_Dist=st.sidebar.selectbox('Select a Distribution', ('Gamma','Poisson'))
+
+
+    if Select_Dist=='Gamma':
+        st.title('{} Random Variable'.format(Select_Dist))
+        st.write('Gamma Distribution is one of the distributions, which is widely used in the field of Business, Science and Engineering, in order to model the continuous variable that should have a positive and skewed distribution. Gamma distribution is a kind of statistical distributions which is related to the beta distribution. This distribution arises naturally in which the waiting time between Poisson distributed events are relevant to each other. ')
+
+        st.sidebar.markdown('# Select Rate')
+        lam=st.sidebar.number_input("Lambda",0.1, step=0.1)
+        st.sidebar.markdown('# Select Beta')
+        beta=st.sidebar.number_input("Beta",0.5, step=0.5)
+
+        X=rvgamma(np.int64(Size),lam,beta)
+        fig = px.histogram(X)
+        fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
+
+        #Plot!
+        st.plotly_chart(fig, use_container_width=True)
+
+    if Select_Dist=='Poisson':
+            st.title('{} Random Variable'.format(Select_Dist))
+            st.write('Poisson distribution is one of the important topics. It is used for calculating the possibilities for an event with the average rate of value. Poisson distribution is a discrete probability distribution. ')
+            st.sidebar.markdown('# Select Rate')
+            lam=st.sidebar.number_input("Lambda",0.1, step=0.1)
+            
+            X=rvpoisson(np.int64(Size), lam)
+        
+            fig = px.histogram(X)
+            fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
+
+            #Plot!
+            st.plotly_chart(fig, use_container_width=True,showlegend="false")
+
 
 if Select_Method=='Box Muller Method':
     st.title('Normal Random Variable')
@@ -268,7 +363,7 @@ if Select_Method=='Box Muller Method':
         X.extend(z)
 
     fig = px.histogram(X)
-    fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: Normal RV')
+    fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram Normal RV')
 
     #Plot!
     st.plotly_chart(fig, use_container_width=True)
@@ -279,5 +374,3 @@ st.title('References')
 st.write('[1] Keller, C.; Glück, F.; Gerlach, C.F.; Schlegel, T. Investigating the Potential of Data Science Methods for Sustainable Public Transport. Sustainability 2022, 14, 4211.')
 st.write('[2] Burr, T., Merrifield, S., Duffy, D., Griffiths, J., Wright, S., Barker, G., 2008. Reducing Passenger Rail Delays by Better Management of Incidents. Stationery Office, London. ')
 st.write('[3] Preston, J., Wall, G., Batley, R., Ibáñez, J.N., Shires, J., 2009. Impact of delays on passenger train services. Transport. Res. Rec.: J. Transport. Res. Board 2117 (1), 14–23.')
-st.write('[4] Fredrik Monsuur, Marcus Enoch, Mohammed Quddus, Stuart Meek, Modeling the impact of rail delays on passenger satisfaction, Transportation Research Part A: Policy and Practice, Volume 152, 2021, Pages 19-35, ISSN 0965-8564.')
-st.write('[5] Nils O.E. Olsson, Hans Haugland, Influencing factors on train punctuality—results from some Norwegian studies, Transport Policy, Volume 11, Issue 4, 2004, Pages 387-397, ISSN 0967-070X.')
