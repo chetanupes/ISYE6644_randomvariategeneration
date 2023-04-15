@@ -128,7 +128,7 @@ def rvpoisson(n,lmbda=0.5):
 st.title('ISYE-6644: Project (Random Variate Generator)')
 
 #Team
-st.title('Team Members')
+st.title('Team 64')
 st.write('1. Shameema Shahul Hameed')
 st.write('2. Chetan Tewari')
 
