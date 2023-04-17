@@ -381,4 +381,4 @@ st.write('[5] Wikipedia. https://en.wikipedia.org/wiki/Main_Page/')
 st.write('[6] Medium. https://medium.com/')
 st.write('[7] Law, A. M. (2015). Simulation modeling and analysis (5th Edition). New York: Mcgraw-Hill.')
 
-
+st.write('Note: Kindly send your feedback, comments and recommendations to chetan.upes@gmail.com. Your feedback and comments are very valuable and will help us make this tool better and more useful.')
