@@ -119,6 +119,8 @@ def rvpoisson(n,lmbda=0.5):
         p=1
         X=-1
         while p > a:
+            if i==n:
+                break
             p=p*U[i]
             X=X+1
             i=i+1
