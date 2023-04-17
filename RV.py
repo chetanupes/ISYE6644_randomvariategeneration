@@ -302,7 +302,7 @@ if Select_Method=='Convolution Method':
 if Select_Method=='Acceptance-Rejection':
 
     st.title('Acceptance-Rejection')
-    st.write('Acceptance-Rejection is a way to simulate random samples from an unknown (or difficult to sample from) distribution (called the target distribution) by using random samples from a similar, more convenient probability distribution. A random subset of the generated samples are rejected; the rest are accepted. The goal is for the accepted samples to be distributed as if they were from the target probability distribution.')
+    st.write('The Acceptance-Rejection method is a general approach to generate random variates from any probability distribution. This method involves generating random samples from a simpler distribution that "covers" the target distribution and rejecting the samples that fall outside the target distribution. For example, you can generate uniform random variables in a rectangle that covers the target distribution and accept the samples that fall inside the target distribution. This method can be computationally expensive if the target distribution is complex or has a small acceptance rate.')
 
     #Choosing a unifor dist
     st.sidebar.markdown('# Generating a Uniform')
@@ -373,6 +373,12 @@ if Select_Method=='Box Muller Method':
 
 #References
 st.title('References')
-st.write('[1] Keller, C.; Glück, F.; Gerlach, C.F.; Schlegel, T. Investigating the Potential of Data Science Methods for Sustainable Public Transport. Sustainability 2022, 14, 4211.')
-st.write('[2] Burr, T., Merrifield, S., Duffy, D., Griffiths, J., Wright, S., Barker, G., 2008. Reducing Passenger Rail Delays by Better Management of Incidents. Stationery Office, London. ')
-st.write('[3] Preston, J., Wall, G., Batley, R., Ibáñez, J.N., Shires, J., 2009. Impact of delays on passenger train services. Transport. Res. Rec.: J. Transport. Res. Board 2117 (1), 14–23.')
+st.write('[1] NumPy. (2023) from https://numpy.org/')
+st.write('[2] Plotly. (2023) https://plotly.com/python/')
+st.write('[3] Streamlit. (2023) https://streamlit.io/')
+st.write('[4] Statistics By Jim. https://statisticsbyjim.com/')
+st.write('[5] Wikipedia. https://en.wikipedia.org/wiki/Main_Page/')
+st.write('[6] Medium. https://medium.com/')
+st.write('[7] Law, A. M. (2015). Simulation modeling and analysis (5th Edition). New York: Mcgraw-Hill.')
+
+
