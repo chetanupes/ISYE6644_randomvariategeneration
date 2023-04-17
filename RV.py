@@ -160,7 +160,7 @@ if Select_Method=='Inverse Transform Method':
     
     st.title('Inverse Transform Method')
     st.write('The inverse transform method is a general approach to generate random observations from any continuous probability distribution. This method involves finding the inverse of the cumulative distribution function (CDF) of the distribution you want to generate. You can then use the generated uniform random variable as the input to the inverse CDF to get the desired random variate. The inverse CDF can be computed analytically for some distributions or numerically using methods like bisection, Newton-Raphson, or Brents method. Inverse Transform Method follows the Inverse Transform Theorem, which states that let X be a continuous random variable with a cumulative distribution function (CDF) F(x), then F(X) ∼ Uniform (0, 1). Hence, we can produce the random variables of any distribution if we have uniform random variables and the CDF (in closed form) of that distribution using the formula below.')
-    st.write('X= F-1(U), where F-1 is the inverse of F and U is a continuous uniform di\hw2web\external-accounts\widget\embeddedTmcWidgetContainer.xhtmlstribution (0,1)')
+    st.write('X= F-1(U), where F-1 is the inverse of F and U is a continuous uniform distribution (0,1)')
     st.write('Pseudo code for generating random variables using Inverse Transform Method from U (0,1):')
     st.write('1. Generate the Uniform Random variables U: U1, U2, U3, …, Un using the uniform_rv function as shown in the code above.')
     st.write('2. Calculate the F-1 of F')
