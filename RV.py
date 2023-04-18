@@ -269,7 +269,7 @@ if Select_Method=='Convolution Method':
         st.plotly_chart(fig, use_container_width=True)
     if Select_Dist=='Triangular':
         st.title('{} Random Variable'.format(Select_Dist))
-        st.write('The triangular distribution provides a simplistic representation of the probability distribution when limited sample data is available.')
+        st.write('The triangular distribution provides a simplistic representation of the probability distribution when limited sample data is available. A triangular distribution is a continuous probability distribution that has a triangular shape. It is defined by three parameters: a, b, and c, where a is the minimum value, b is the maximum value, and c is the mode (the most common value).')
         X=[]
         for i in range(0,np.int64(Size)):
             U1=U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
@@ -284,7 +284,7 @@ if Select_Method=='Convolution Method':
 
     elif Select_Dist=='Erlang':
         st.title('{} Random Variable'.format(Select_Dist))
-        st.write('The Erlang distribution is the distribution of a sum of k independent exponential variables. The Erlang distribution is a generalization of the exponential distribution. While the exponential random variable describes the time between adjacent events, the Erlang random variable describes the time interval between any event and the kth following event.')
+        st.write('The Erlang distribution is the distribution of a sum of k independent exponential variables. The Erlang distribution is a generalization of the exponential distribution. While the exponential random variable describes the time between adjacent events, the Erlang random variable describes the time interval between any event and the kth following event. It is used to model the number of events that occur in a fixed interval of time, given that the events occur independently and with a constant rate.')
         st.sidebar.markdown('# Select Rate')
         lam=st.sidebar.number_input("Lambda",0.1, step=0.1)
         n=st.sidebar.number_input("Erlang-k", 1)
