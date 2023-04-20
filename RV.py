@@ -222,7 +222,7 @@ if Select_Method=='Inverse Transform Method':
         st.write('3. The probability of success is the same for each trial')
         st.sidebar.markdown('# Select probability')
         p=st.sidebar.number_input("p",min_value=0.01,max_value=1.0, step=0.1)
-        U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=np.int64(Size))
+        U=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=np.int64(Size))
         X=[]
         for i in U:
             X.append(math.ceil((np.log(i))/(np.log(1-p))))
@@ -258,7 +258,7 @@ if Select_Method=='Convolution Method':
         
         X=[]
         for j in range(0,np.int64(k)):
-            U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=np.int64(Size))
+            U=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=np.int64(Size))
             Y=(U<=p).astype(int)
             X.append(np.sum(Y))
 
@@ -272,8 +272,8 @@ if Select_Method=='Convolution Method':
         st.write('The triangular distribution provides a simplistic representation of the probability distribution when limited sample data is available. A triangular distribution is a continuous probability distribution that has a triangular shape. It is defined by three parameters: a, b, and c, where a is the minimum value, b is the maximum value, and c is the mode (the most common value).')
         X=[]
         for i in range(0,np.int64(Size)):
-            U1=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
-            U2=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
+            U1=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=1)
+            U2=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=1)
             X.append((U1+U2)[0])
 
         fig = px.histogram(X)
@@ -290,7 +290,7 @@ if Select_Method=='Convolution Method':
         n=st.sidebar.number_input("Erlang-k", 1)
         X=0
         for i in range(0,np.int64(n)):
-            U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=np.int64(Size))
+            U=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=np.int64(Size))
             X+=(-(1/lam)*(np.log(U)))
         
         fig = px.histogram(X)
@@ -358,8 +358,8 @@ if Select_Method=='Box Muller Method':
 
     X=[]
     for i in range(0,np.int64(Size)):
-        U1=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
-        U2=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
+        U1=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=1)
+        U2=uniform_rv(lower_limit=Lower, higher_limit=Upper,size=1)
         z=np.sqrt(-2*np.log(U1))*np.cos(2*np.pi*U2)
         z=z*sigma+mu
         X.extend(z)
