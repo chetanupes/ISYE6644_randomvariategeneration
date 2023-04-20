@@ -351,7 +351,7 @@ if Select_Method=='Box Muller Method':
     st.sidebar.markdown('# Generating a Uniform')
     Lower=st.sidebar.number_input("Lower Limit",0)
     Upper=st.sidebar.number_input("Upper Limit",1)
-    Size=st.sidebar.number_input("Size", 20)
+    Size=st.sidebar.number_input("Size", 30)
     st.sidebar.markdown('# Mean & Standard Deviation')
     mu=st.sidebar.number_input("Mean",0)
     sigma=st.sidebar.number_input("SD", 1)
