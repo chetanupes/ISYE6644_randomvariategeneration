@@ -272,8 +272,8 @@ if Select_Method=='Convolution Method':
         st.write('The triangular distribution provides a simplistic representation of the probability distribution when limited sample data is available. A triangular distribution is a continuous probability distribution that has a triangular shape. It is defined by three parameters: a, b, and c, where a is the minimum value, b is the maximum value, and c is the mode (the most common value).')
         X=[]
         for i in range(0,np.int64(Size)):
-            U1=U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
-            U2=U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
+            U1=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
+            U2=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
             X.append((U1+U2)[0])
 
         fig = px.histogram(X)
@@ -290,7 +290,7 @@ if Select_Method=='Convolution Method':
         n=st.sidebar.number_input("Erlang-k", 1)
         X=0
         for i in range(0,np.int64(n)):
-            U=U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=np.int64(Size))
+            U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=np.int64(Size))
             X+=(-(1/lam)*(np.log(U)))
         
         fig = px.histogram(X)
