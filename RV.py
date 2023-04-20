@@ -358,8 +358,8 @@ if Select_Method=='Box Muller Method':
 
     X=[]
     for i in range(0,np.int64(Size)):
-        U1=U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
-        U2=U=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
+        U1=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
+        U2=uniform_rv(lower_limit=Upper, higher_limit=Lower,size=1)
         z=np.sqrt(-2*np.log(U1))*np.cos(2*np.pi*U2)
         z=z*sigma+mu
         X.extend(z)
