@@ -195,6 +195,8 @@ if Select_Method=='Inverse Transform Method':
             X=-(1/lam)*(np.log(U))
         
             fig = px.histogram(X)
+            fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+            fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
             fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
             #Plot!
@@ -211,6 +213,8 @@ if Select_Method=='Inverse Transform Method':
         X=-(1/lam)*(np.log(U))**1/beta
         
         fig = px.histogram(X)
+        fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
         fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
         #Plot!
@@ -230,6 +234,8 @@ if Select_Method=='Inverse Transform Method':
             X.append(math.ceil((np.log(i))/(np.log(1-p))))
 
         fig = px.histogram(X)
+        fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
         fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
         #Plot!
@@ -265,6 +271,8 @@ if Select_Method=='Convolution Method':
             X.append(np.sum(Y))
 
         fig = px.histogram(X)
+        fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
         fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
         #Plot!
@@ -279,6 +287,8 @@ if Select_Method=='Convolution Method':
             X.append((U1+U2)[0])
 
         fig = px.histogram(X)
+        fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
         fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
         #Plot!
@@ -296,6 +306,8 @@ if Select_Method=='Convolution Method':
             X+=(-(1/lam)*(np.log(U)))
         
         fig = px.histogram(X)
+        fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
         fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
         #Plot!
@@ -327,6 +339,8 @@ if Select_Method=='Acceptance-Rejection':
 
         X=rvgamma(np.int64(Size),lam,beta)
         fig = px.histogram(X)
+        fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
         fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
         #Plot!
@@ -341,6 +355,8 @@ if Select_Method=='Acceptance-Rejection':
             X=rvpoisson(np.int64(Size), lam)
         
             fig = px.histogram(X)
+            fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+        fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
             fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram: {} RV'.format(Select_Dist))
 
             #Plot!
@@ -367,6 +383,8 @@ if Select_Method=='Box Muller Method':
         X.extend(z)
 
     fig = px.histogram(X)
+    fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
+    fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
     fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram Normal RV')
 
     #Plot!
