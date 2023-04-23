@@ -384,7 +384,7 @@ if Select_Method=='Box Muller Method':
 
     fig = px.histogram(X)
     fig.update_yaxes(ticklabelposition="inside top", title='Frequency')
-    fig.update_xaxes(ticklabelposition="inside top", title='{} Random Variate'.format(Select_Dist))
+    fig.update_xaxes(ticklabelposition="inside top", title='Normal Random Variate')
     fig.update_layout(showlegend=False,height=500, width=1300,barmode='group',title_text='Histogram Normal RV')
 
     #Plot!
